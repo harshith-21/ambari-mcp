@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  ambari-mcp:
+    build: .
+    ports:
+      - "8000:8000"  # FastAPI REST interface
+      - "8001:8001"  # MCP server
+    environment:
+      - AMBARI_HOST=${AMBARI_HOST:-localhost}
+      - AMBARI_PORT=${AMBARI_PORT:-8080}
+      - AMBARI_USERNAME=${AMBARI_USERNAME:-admin}
+      - AMBARI_PASSWORD=${AMBARI_PASSWORD:-admin}
+      - AMBARI_CLUSTER_NAME=${AMBARI_CLUSTER_NAME:-}
+      - MCP_SERVER_NAME=${MCP_SERVER_NAME:-ambari-mcp}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+      - MCP_MODE=${MCP_MODE:-normal}
+    volumes:
+      - ./logs:/app/logs
+      - ./config:/app/config
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Add a development environment
+  ambari-mcp-dev:
+    build: .
+    ports:
+      - "8002:8000"
+      - "8003:8001"
+    environment:
+      - AMBARI_HOST=${AMBARI_HOST:-localhost}
+      - AMBARI_PORT=${AMBARI_PORT:-8080}
+      - AMBARI_USERNAME=${AMBARI_USERNAME:-admin}
+      - AMBARI_PASSWORD=${AMBARI_PASSWORD:-admin}
+      - LOG_LEVEL=DEBUG
+      - MCP_MODE=development
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    command: ["python", "-m", "ambari_mcp.main", "--reload"]
+    profiles:
+      - dev
+
+volumes:
+  logs:
+  config: 

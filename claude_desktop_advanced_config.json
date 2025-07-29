@@ -1,0 +1,41 @@
+{
+  "mcpServers": {
+    "ambari-mcp-dev": {
+      "command": "python",
+      "args": ["-m", "ambari_mcp.main", "run-mcp", "--transport", "stdio"],
+      "env": {
+        "AMBARI_HOST": "dev-ambari.company.com",
+        "AMBARI_USERNAME": "dev-admin",
+        "AMBARI_PASSWORD": "dev-password",
+        "AMBARI_CLUSTER_NAME": "DevCluster",
+        "MCP_MODE": "development",
+        "LOG_LEVEL": "DEBUG"
+      }
+    },
+    "ambari-mcp-prod": {
+      "command": "python", 
+      "args": ["-m", "ambari_mcp.main", "run-mcp", "--transport", "stdio"],
+      "env": {
+        "AMBARI_HOST": "prod-ambari.company.com",
+        "AMBARI_PORT": "8443",
+        "AMBARI_USE_SSL": "true",
+        "AMBARI_USERNAME": "prod-admin",
+        "AMBARI_PASSWORD": "prod-password",
+        "AMBARI_CLUSTER_NAME": "ProdCluster",
+        "MCP_MODE": "normal",
+        "LOG_LEVEL": "INFO"
+      }
+    },
+    "ambari-mcp-multi": {
+      "command": "python",
+      "args": [
+        "-c",
+        "from ambari_mcp.enhanced_server import EnhancedAmbariMCPServer; from ambari_mcp.config import Settings; import asyncio; asyncio.run(EnhancedAmbariMCPServer(Settings()).run_stdio())"
+      ],
+      "env": {
+        "MCP_MODE": "normal",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+} 

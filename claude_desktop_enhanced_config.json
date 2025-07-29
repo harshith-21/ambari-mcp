@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "ambari-mcp-enhanced": {
+      "command": "python",
+      "args": [
+        "-c",
+        "from ambari_mcp.enhanced_server import EnhancedAmbariMCPServer; from ambari_mcp.config import Settings; import asyncio; asyncio.run(EnhancedAmbariMCPServer(Settings()).run_stdio())"
+      ],
+      "env": {
+        "MCP_MODE": "normal",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+} 

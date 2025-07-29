@@ -1,0 +1,597 @@
+2025-07-29T19:09:23.069Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:09:23.081Z [ambari-mcp] [info] Using MCP server command: python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:09:23.083Z [ambari-mcp] [error] spawn python ENOENT {
+  metadata: {
+    context: 'connection',
+    stack: 'Error: spawn python ENOENT\n' +
+      '    at ChildProcess._handle.onexit (node:internal/child_process:285:19)\n' +
+      '    at onErrorNT (node:internal/child_process:483:16)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)'
+  }
+}
+2025-07-29T19:09:23.084Z [ambari-mcp] [error] spawn python ENOENT {
+  metadata: {
+    stack: 'Error: spawn python ENOENT\n' +
+      '    at ChildProcess._handle.onexit (node:internal/child_process:285:19)\n' +
+      '    at onErrorNT (node:internal/child_process:483:16)\n' +
+      '    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)'
+  }
+}
+2025-07-29T19:09:23.086Z [ambari-mcp] [info] Server transport closed { metadata: undefined }
+2025-07-29T19:09:23.086Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:09:23.086Z [ambari-mcp] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log. { metadata: undefined }
+2025-07-29T19:09:23.087Z [ambari-mcp] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) { metadata: { context: 'connection', stack: undefined } }
+2025-07-29T19:20:23.290Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:20:23.300Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:20:23.303Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:20:23.318Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/__init__.py", line 12, in <module>
+    from .server import AmbariMCPServer
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/server.py", line 12, in <module>
+    from .client import AmbariClient, AmbariAPIError
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/client.py", line 11, in <module>
+    from .config import AmbariConfig
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/config.py", line 108, in <module>
+    settings = Settings()
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/config.py", line 104, in __init__
+    os.makedirs(os.path.dirname(self.logging.file), exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 227, in makedirs
+OSError: [Errno 30] Read-only file system: 'logs'
+2025-07-29T19:20:25.930Z [ambari-mcp] [info] Server transport closed { metadata: undefined }
+2025-07-29T19:20:25.930Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:20:25.931Z [ambari-mcp] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log. { metadata: undefined }
+2025-07-29T19:20:25.931Z [ambari-mcp] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) { metadata: { context: 'connection', stack: undefined } }
+2025-07-29T19:20:25.932Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:21:06.287Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:21:06.286Z [ambari-mcp] [info] Shutting down server... { metadata: undefined }
+2025-07-29T19:21:06.323Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:21:06.329Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:21:06.331Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:21:06.336Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/__init__.py", line 12, in <module>
+    from .server import AmbariMCPServer
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/server.py", line 12, in <module>
+    from .client import AmbariClient, AmbariAPIError
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/client.py", line 11, in <module>
+    from .config import AmbariConfig
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/config.py", line 108, in <module>
+    settings = Settings()
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/config.py", line 104, in __init__
+    os.makedirs(os.path.dirname(self.logging.file), exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 227, in makedirs
+OSError: [Errno 30] Read-only file system: 'logs'
+2025-07-29T19:21:11.409Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:21:11.415Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:21:11.417Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:21:11.428Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+Traceback (most recent call last):
+  File "<frozen runpy>", line 189, in _run_module_as_main
+  File "<frozen runpy>", line 112, in _get_module_details
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/__init__.py", line 12, in <module>
+    from .server import AmbariMCPServer
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/server.py", line 12, in <module>
+    from .client import AmbariClient, AmbariAPIError
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/client.py", line 11, in <module>
+    from .config import AmbariConfig
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/config.py", line 108, in <module>
+    settings = Settings()
+  File "/Users/harshithgandhe/Desktop/ambari_mcp/ambari_mcp/config.py", line 104, in __init__
+    os.makedirs(os.path.dirname(self.logging.file), exist_ok=True)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 227, in makedirs
+OSError: [Errno 30] Read-only file system: 'logs'
+2025-07-29T19:21:11.868Z [ambari-mcp] [info] Server transport closed { metadata: undefined }
+2025-07-29T19:21:11.868Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:21:11.868Z [ambari-mcp] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log. { metadata: undefined }
+2025-07-29T19:21:11.868Z [ambari-mcp] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) { metadata: { context: 'connection', stack: undefined } }
+2025-07-29T19:21:11.869Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:35:53.844Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:35:53.844Z [ambari-mcp] [info] Shutting down server... { metadata: undefined }
+2025-07-29T19:35:53.901Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:35:53.905Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:35:53.907Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:35:53.915Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+/Users/harshithgandhe/Desktop/ambari_mcp/venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+2025-07-29T19:35:58.620Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:35:58.632Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:35:58.634Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:35:58.825Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+/Users/harshithgandhe/Desktop/ambari_mcp/venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+2025-07-29T19:35:59.170Z [ambari-mcp] [error] Unexpected token '╭', "╭─────────"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '╭', "╭─────────"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.171Z [ambari-mcp] [error] Unexpected token '│', "│         "... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│         "... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.171Z [ambari-mcp] [error] Unexpected token '│', "│ Ambari M"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Ambari M"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.171Z [ambari-mcp] [error] Unexpected token '│', "│ Version:"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Version:"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.171Z [ambari-mcp] [error] Unexpected token '│', "│ Mode: no"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Mode: no"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.172Z [ambari-mcp] [error] Unexpected token '│', "│         "... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│         "... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.172Z [ambari-mcp] [error] Unexpected token '│', "│ Ambari C"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Ambari C"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.172Z [ambari-mcp] [error] Unexpected token '│', "│ Host: 10"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Host: 10"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.172Z [ambari-mcp] [error] Unexpected token '│', "│ Cluster:"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Cluster:"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.172Z [ambari-mcp] [error] Unexpected token '│', "│         "... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│         "... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.172Z [ambari-mcp] [error] Unexpected token '│', "│ Server C"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ Server C"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.173Z [ambari-mcp] [error] Unexpected token '│', "│ MCP Port"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ MCP Port"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.173Z [ambari-mcp] [error] Unexpected token '│', "│ FastAPI "... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│ FastAPI "... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.173Z [ambari-mcp] [error] Unexpected token '│', "│         "... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '│', "│         "... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.173Z [ambari-mcp] [error] Unexpected token '╰', "╰─────────"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token '╰', "╰─────────"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.215Z [ambari-mcp] [error] Unexpected token 'S', "Starting M"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token 'S', "Starting M"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.215Z [ambari-mcp] [error] Unexpected token 'E', "Error runn"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token 'E', "Error runn"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.215Z [ambari-mcp] [error] Unexpected token 'F', "Fatal erro"... is not valid JSON {
+  metadata: {
+    context: 'connection',
+    stack: `SyntaxError: Unexpected token 'F', "Fatal erro"... is not valid JSON\n` +
+      '    at JSON.parse (<anonymous>)\n' +
+      '    at zPe (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:207)\n' +
+      '    at WPe.readMessage (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:192:133)\n' +
+      '    at Gne.processReadBuffer (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:2201)\n' +
+      '    at Socket.<anonymous> (/Applications/Claude.app/Contents/Resources/app.asar/.vite/build/index-DyHP6ri_.js:193:1651)\n' +
+      '    at Socket.emit (node:events:518:28)\n' +
+      '    at addChunk (node:internal/streams/readable:561:12)\n' +
+      '    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n' +
+      '    at Readable.push (node:internal/streams/readable:392:5)\n' +
+      '    at Pipe.onStreamRead (node:internal/stream_base_commons:189:23)'
+  }
+}
+2025-07-29T19:35:59.278Z [ambari-mcp] [info] Server transport closed { metadata: undefined }
+2025-07-29T19:35:59.278Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:35:59.278Z [ambari-mcp] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log. { metadata: undefined }
+2025-07-29T19:35:59.278Z [ambari-mcp] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) { metadata: { context: 'connection', stack: undefined } }
+2025-07-29T19:35:59.279Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:41:56.025Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:41:56.024Z [ambari-mcp] [info] Shutting down server... { metadata: undefined }
+2025-07-29T19:41:56.138Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:41:56.141Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:41:56.143Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:41:56.150Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+/Users/harshithgandhe/Desktop/ambari_mcp/venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+Error running MCP server: Already running asyncio in this thread
+Fatal error: Already running asyncio in this thread
+2025-07-29T19:41:59.485Z [ambari-mcp] [info] Initializing server... { metadata: undefined }
+2025-07-29T19:41:59.497Z [ambari-mcp] [info] Using MCP server command: /Users/harshithgandhe/Desktop/ambari_mcp/venv/bin/python with args and path: {
+  metadata: {
+    args: [
+      '-m',
+      'ambari_mcp.main',
+      'run-mcp',
+      '--transport',
+      'stdio',
+      [length]: 5
+    ],
+    paths: [
+      '/usr/local/bin',
+      '/opt/homebrew/bin',
+      '/usr/bin',
+      '/usr/bin',
+      '/bin',
+      '/usr/sbin',
+      '/sbin',
+      [length]: 7
+    ]
+  }
+} %o
+2025-07-29T19:41:59.498Z [ambari-mcp] [info] Server started and connected successfully { metadata: undefined }
+2025-07-29T19:41:59.511Z [ambari-mcp] [info] Message from client: {"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"claude-ai","version":"0.1.0"}},"jsonrpc":"2.0","id":0} { metadata: undefined }
+/Users/harshithgandhe/Desktop/ambari_mcp/venv/lib/python3.13/site-packages/pydantic/_internal/_config.py:345: UserWarning: Valid config keys have changed in V2:
+* 'allow_population_by_field_name' has been renamed to 'populate_by_name'
+  warnings.warn(message, UserWarning)
+Error running MCP server: Already running asyncio in this thread
+Fatal error: Already running asyncio in this thread
+2025-07-29T19:42:00.077Z [ambari-mcp] [info] Server transport closed { metadata: undefined }
+2025-07-29T19:42:00.077Z [ambari-mcp] [info] Client transport closed { metadata: undefined }
+2025-07-29T19:42:00.077Z [ambari-mcp] [info] Server transport closed unexpectedly, this is likely due to the process exiting early. If you are developing this MCP server you can add output to stderr (i.e. `console.error('...')` in JavaScript, `print('...', file=sys.stderr)` in python) and it will appear in this log. { metadata: undefined }
+2025-07-29T19:42:00.077Z [ambari-mcp] [error] Server disconnected. For troubleshooting guidance, please visit our [debugging documentation](https://modelcontextprotocol.io/docs/tools/debugging) { metadata: { context: 'connection', stack: undefined } }
+2025-07-29T19:42:00.078Z [ambari-mcp] [info] Client transport closed { metadata: undefined }

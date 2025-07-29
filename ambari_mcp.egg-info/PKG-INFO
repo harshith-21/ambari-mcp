@@ -1,0 +1,22 @@
+Metadata-Version: 2.4
+Name: ambari_mcp
+Version: 1.0.0
+Summary: MCP Server for Apache Ambari Operations
+Author: Ambari MCP Team
+Requires-Python: >=3.11
+Requires-Dist: mcp[cli]==1.12.2
+Requires-Dist: fastapi==0.115.6
+Requires-Dist: uvicorn[standard]==0.32.1
+Requires-Dist: httpx==0.28.1
+Requires-Dist: aiohttp==3.11.11
+Requires-Dist: pydantic==2.10.4
+Requires-Dist: pydantic-settings==2.7.0
+Requires-Dist: asyncio-mqtt==0.16.2
+Requires-Dist: structlog==25.4.0
+Requires-Dist: click==8.1.8
+Requires-Dist: rich==13.9.4
+Requires-Dist: python-multipart==0.0.20
+Dynamic: author
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
