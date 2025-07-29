@@ -10,7 +10,7 @@ from mcp.server.fastmcp.prompts import base
 from pydantic import BaseModel, Field
 
 from .client import AmbariClient, AmbariAPIError
-from .config import Settings, MCPModeType
+from .config import Settings, MCPModeType, AmbariConfig
 from .modes import MCPModeManager, ModeContext
 
 
@@ -38,6 +38,7 @@ class AmbariMCPServer:
         self.settings = settings
         self.mode_manager = MCPModeManager()
         self.ambari_client: Optional[AmbariClient] = None
+        self.current_ambari_config: Optional[AmbariConfig] = None
         
         # Initialize FastMCP server
         self.mcp = FastMCP(
@@ -54,10 +55,39 @@ class AmbariMCPServer:
         self._register_resources()
         self._register_prompts()
         
+    def _has_connection_details(self) -> bool:
+        """Check if we have valid Ambari connection details."""
+        return (self.current_ambari_config is not None and 
+                self.current_ambari_config.host and 
+                self.current_ambari_config.host != "localhost")
+    
+    def _get_connection_status(self) -> Dict[str, Any]:
+        """Get current connection status."""
+        if not self.current_ambari_config:
+            return {
+                "connected": False,
+                "message": "No Ambari connection configured. Please provide connection details.",
+                "required_info": ["host", "port", "username", "password", "cluster_name"]
+            }
+        
+        return {
+            "connected": True,
+            "host": self.current_ambari_config.host,
+            "port": self.current_ambari_config.port,
+            "cluster_name": self.current_ambari_config.cluster_name,
+            "message": f"Connected to Ambari at {self.current_ambari_config.host}:{self.current_ambari_config.port}"
+        }
+    
     async def _get_client(self) -> AmbariClient:
         """Get or create Ambari client."""
-        if self.ambari_client is None:
-            self.ambari_client = AmbariClient(self.settings.ambari)
+        if not self._has_connection_details():
+            raise AmbariAPIError("No Ambari connection configured. Please use the 'set_ambari_connection' tool to provide connection details.")
+        
+        # If client exists but config changed, recreate it
+        if self.ambari_client is None or self.ambari_client.config != self.current_ambari_config:
+            if self.ambari_client:
+                await self.ambari_client.disconnect()
+            self.ambari_client = AmbariClient(self.current_ambari_config)
             await self.ambari_client.connect()
         return self.ambari_client
         
@@ -68,6 +98,15 @@ class AmbariMCPServer:
     def _requires_confirmation(self, operation: str) -> bool:
         """Check if operation requires confirmation."""
         return self.mode_manager.requires_confirmation(operation)
+    
+    def _check_connection_required(self) -> Optional[OperationResult]:
+        """Check if connection is required and return error result if not connected."""
+        if not self._has_connection_details():
+            return OperationResult(
+                success=False,
+                message="No Ambari connection configured. Please use 'set_ambari_connection' tool first to provide Ambari server details (host, port, username, password)."
+            )
+        return None
         
     def _register_tools(self):
         """Register all MCP tools."""
@@ -115,10 +154,105 @@ class AmbariMCPServer:
                 data={"modes": {k.value: v for k, v in modes.items()}}
             )
         
+        # Connection Management Tools
+        @self.mcp.tool()
+        async def set_ambari_connection(
+            context: Context,
+            host: str,
+            port: int = 8080,
+            username: str = "admin", 
+            password: str = "admin",
+            cluster_name: Optional[str] = None,
+            use_ssl: bool = False
+        ) -> OperationResult:
+            """Set Ambari connection details. This must be called before any Ambari operations."""
+            try:
+                # Create new Ambari configuration
+                self.current_ambari_config = AmbariConfig(
+                    host=host,
+                    port=port,
+                    username=username,
+                    password=password,
+                    cluster_name=cluster_name,
+                    use_ssl=use_ssl
+                )
+                
+                # Disconnect existing client if any
+                if self.ambari_client:
+                    await self.ambari_client.disconnect()
+                    self.ambari_client = None
+                
+                # Test the connection
+                test_client = AmbariClient(self.current_ambari_config)
+                await test_client.connect()
+                
+                # Try to get cluster info to validate connection
+                clusters = await test_client.get_clusters()
+                await test_client.disconnect()
+                
+                if not clusters:
+                    return OperationResult(
+                        success=False,
+                        message="Connection successful but no clusters found. Please verify the Ambari server has clusters configured."
+                    )
+                
+                # If cluster_name not provided, use the first available cluster
+                if not cluster_name and clusters:
+                    self.current_ambari_config.cluster_name = clusters[0].cluster_name
+                    await context.info(f"Using cluster: {clusters[0].cluster_name}")
+                
+                await context.info(f"Successfully connected to Ambari at {host}:{port}")
+                
+                return OperationResult(
+                    success=True,
+                    message=f"Ambari connection configured successfully",
+                    data={
+                        "host": host,
+                        "port": port,
+                        "cluster_name": self.current_ambari_config.cluster_name,
+                        "available_clusters": [c.cluster_name for c in clusters]
+                    }
+                )
+                
+            except Exception as e:
+                return OperationResult(
+                    success=False,
+                    message=f"Failed to connect to Ambari: {str(e)}"
+                )
+        
+        @self.mcp.tool()
+        async def get_connection_status(context: Context) -> OperationResult:
+            """Get current Ambari connection status."""
+            status = self._get_connection_status()
+            return OperationResult(
+                success=status["connected"],
+                message=status["message"],
+                data=status
+            )
+        
+        @self.mcp.tool()
+        async def disconnect_ambari(context: Context) -> OperationResult:
+            """Disconnect from current Ambari server."""
+            if self.ambari_client:
+                await self.ambari_client.disconnect()
+                self.ambari_client = None
+            
+            self.current_ambari_config = None
+            
+            return OperationResult(
+                success=True,
+                message="Disconnected from Ambari server"
+            )
+        
         # Cluster Operations
         @self.mcp.tool()
         async def get_cluster_status(context: Context, cluster_name: Optional[str] = None) -> OperationResult:
             """Get comprehensive cluster status information."""
+            # Check if we have connection details
+            connection_check = self._check_connection_required()
+            if connection_check:
+                return connection_check
+            
             if not self._check_operation_allowed("get_cluster_status"):
                 return OperationResult(success=False, message="Operation not allowed in current mode")
                 
@@ -152,6 +286,11 @@ class AmbariMCPServer:
         @self.mcp.tool()
         async def list_services(context: Context, cluster_name: Optional[str] = None) -> OperationResult:
             """List all services in the cluster."""
+            # Check if we have connection details
+            connection_check = self._check_connection_required()
+            if connection_check:
+                return connection_check
+            
             if not self._check_operation_allowed("list_services"):
                 return OperationResult(success=False, message="Operation not allowed in current mode")
                 
@@ -192,6 +331,11 @@ class AmbariMCPServer:
         @self.mcp.tool()
         async def start_service(service_name: str, context: Context, cluster_name: Optional[str] = None) -> OperationResult:
             """Start a service."""
+            # Check if we have connection details
+            connection_check = self._check_connection_required()
+            if connection_check:
+                return connection_check
+            
             if not self._check_operation_allowed("start_service"):
                 return OperationResult(success=False, message="Operation not allowed in current mode")
                 
@@ -217,6 +361,11 @@ class AmbariMCPServer:
         @self.mcp.tool()
         async def stop_service(service_name: str, context: Context, cluster_name: Optional[str] = None) -> OperationResult:
             """Stop a service."""
+            # Check if we have connection details
+            connection_check = self._check_connection_required()
+            if connection_check:
+                return connection_check
+            
             if not self._check_operation_allowed("stop_service"):
                 return OperationResult(success=False, message="Operation not allowed in current mode")
                 
@@ -242,6 +391,11 @@ class AmbariMCPServer:
         @self.mcp.tool()
         async def restart_service(service_name: str, context: Context, cluster_name: Optional[str] = None) -> OperationResult:
             """Restart a service."""
+            # Check if we have connection details
+            connection_check = self._check_connection_required()
+            if connection_check:
+                return connection_check
+            
             if not self._check_operation_allowed("restart_service"):
                 return OperationResult(success=False, message="Operation not allowed in current mode")
                 
@@ -517,6 +671,36 @@ class AmbariMCPServer:
     def _register_prompts(self):
         """Register MCP prompts."""
         
+        @self.mcp.prompt()
+        async def setup_ambari_connection() -> str:
+            """Generate a prompt to help users set up Ambari connection."""
+            return """
+I need to connect to an Ambari server to help you manage your Hadoop cluster. Please provide the following information:
+
+**Required Information:**
+1. **Ambari Server IP/Hostname**: The IP address or hostname of your Ambari server
+2. **Port**: Ambari server port (usually 8080)
+3. **Username**: Ambari admin username (usually 'admin')
+4. **Password**: Ambari admin password
+5. **Cluster Name**: Name of the cluster to manage (optional - I can detect available clusters)
+
+**Example:**
+- Host: 192.168.1.100
+- Port: 8080  
+- Username: admin
+- Password: admin
+- Cluster: MyHadoopCluster
+
+Once you provide these details, I'll use the `set_ambari_connection` tool to establish the connection and then I can help you with cluster management tasks like:
+- Checking cluster status
+- Starting/stopping services
+- Managing hosts
+- Monitoring cluster health
+- Configuration management
+
+Please share your Ambari server connection details so we can get started!
+            """.strip()
+
         @self.mcp.prompt()
         async def cluster_overview(cluster_name: Optional[str] = None) -> str:
             """Generate a comprehensive cluster overview prompt."""
