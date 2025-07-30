@@ -1,0 +1,15 @@
+[project]
+name = "weather"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "mcp[cli]>=1.12.2",
+    "numpy>=2.3.2",
+    "openmeteo-requests>=1.6.0",
+    "pandas>=2.3.1",
+    "requests-cache>=1.2.1",
+    "retry-requests>=2.0.0",
+]
