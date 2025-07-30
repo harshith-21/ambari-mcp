@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "weather": {
+      "command": "/Users/harshithgandhe/.local/bin/uv",
+      "args": [
+        "--directory",
+        "/Users/harshithgandhe/Desktop/ambari_mcp/weather",
+        "run",
+        "weather.py"
+      ]
+    }
+  }
+}
