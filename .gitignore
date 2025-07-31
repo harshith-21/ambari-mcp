@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.venv/
+venv/
+env/
+ENV/
+.env
+config.json
+uv.lock
+*.egg-info/
+.python-version
+.DS_Store
+*.log 
